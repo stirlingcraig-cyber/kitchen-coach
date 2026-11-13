@@ -1,0 +1,5 @@
+# Kitchen Coach - Windows desktop engine
+flask>=3.0,<4
+pypdf>=4.0
+defusedxml>=0.7.1
+waitress>=3.0

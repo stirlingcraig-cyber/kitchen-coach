@@ -1,0 +1,11 @@
+{
+  "name": "kitchen-coach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kitchen Coach - timed, spoken, step-by-step recipe guide (web/iPhone build).",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/parser.test.mjs"
+  },
+  "license": "MIT"
+}
