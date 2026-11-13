@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipeml version="0.5">
+  <recipe>
+    <head><title>Mushroom Risotto</title><yield>4</yield></head>
+    <ingredients>
+      <ing><amt><qty>1</qty><unit>litre</unit></amt><item>hot vegetable stock</item></ing>
+      <ing><amt><qty>300</qty><unit>g</unit></amt><item>arborio rice</item></ing>
+      <ing><amt><qty>250</qty><unit>g</unit></amt><item>chestnut mushrooms, sliced</item></ing>
+      <ing><amt><qty>1</qty></amt><item>onion, finely chopped</item></ing>
+      <ing><amt><qty>50</qty><unit>g</unit></amt><item>parmesan, grated</item></ing>
+    </ingredients>
+    <directions>
+      <step>Fry the onion in a little butter for 5 minutes until soft.</step>
+      <step>Add the mushrooms and cook for 3 minutes.</step>
+      <step>Stir in the rice and toast for 1 minute.</step>
+      <step>Add the stock a ladle at a time, stirring, for 18-20 minutes until the rice is creamy.</step>
+      <step>Stir in the parmesan, cover and rest for 2 minutes. Serve.</step>
+    </directions>
+  </recipe>
+</recipeml>

@@ -1,0 +1,18 @@
+{
+  "name": "Kitchen Coach",
+  "short_name": "Kitchen Coach",
+  "description": "Upload a recipe and get a spoken, timed, step-by-step cooking guide.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f1814",
+  "theme_color": "#101a16",
+  "categories": ["food", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

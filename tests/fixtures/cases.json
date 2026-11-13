@@ -1,0 +1,685 @@
+[
+ {
+  "name": "original_bug_decimal_ingredients",
+  "lines": [
+   "Beef stew",
+   "1.5 kg beef",
+   "2 onions",
+   "1. Brown the beef for 10 minutes.",
+   "2. Add the onions and cook for 5 mins.",
+   "3. Simmer for 2 hours."
+  ],
+  "title_hint": "",
+  "stem": "original_bug_decimal_ingredients",
+  "structured": null,
+  "expected": {
+   "title": "Beef stew",
+   "ingredients": [
+    "1.5 kg beef",
+    "2 onions"
+   ],
+   "info": {},
+   "steps": [
+    {
+     "text": "Brown the beef for 10 minutes.",
+     "seconds": 600,
+     "note": ""
+    },
+    {
+     "text": "Add the onions and cook for 5 mins.",
+     "seconds": 300,
+     "note": ""
+    },
+    {
+     "text": "Simmer for 2 hours.",
+     "seconds": 7200,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "unnumbered_method_wrapped",
+  "lines": [
+   "Tomato Soup",
+   "Ingredients",
+   "1 tbsp oil",
+   "1 onion, chopped",
+   "Method",
+   "Fry the onion in the oil over a low heat for",
+   "10 minutes until soft.",
+   "Add the tomatoes and simmer for 20 mins.",
+   "Blend until smooth and serve."
+  ],
+  "title_hint": "",
+  "stem": "unnumbered_method_wrapped",
+  "structured": null,
+  "expected": {
+   "title": "Tomato Soup",
+   "ingredients": [
+    "1 tbsp oil",
+    "1 onion, chopped"
+   ],
+   "info": {},
+   "steps": [
+    {
+     "text": "Fry the onion in the oil over a low heat for 10 minutes until soft.",
+     "seconds": 600,
+     "note": ""
+    },
+    {
+     "text": "Add the tomatoes and simmer for 20 mins.",
+     "seconds": 1200,
+     "note": ""
+    },
+    {
+     "text": "Blend until smooth and serve.",
+     "seconds": 0,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "no_headings_prose",
+  "lines": [
+   "Quick Omelette",
+   "3 eggs",
+   "knob of butter",
+   "Beat the eggs with a pinch of salt in a jug.",
+   "Melt the butter in a frying pan and pour in the eggs, cooking for 2 minutes until just set.",
+   "Fold and serve straight away."
+  ],
+  "title_hint": "",
+  "stem": "no_headings_prose",
+  "structured": null,
+  "expected": {
+   "title": "Quick Omelette",
+   "ingredients": [
+    "3 eggs"
+   ],
+   "info": {},
+   "steps": [
+    {
+     "text": "Beat the eggs with a pinch of salt in a jug.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Melt the butter in a frying pan and pour in the eggs, cooking for 2 minutes until just set.",
+     "seconds": 120,
+     "note": ""
+    },
+    {
+     "text": "Fold and serve straight away.",
+     "seconds": 0,
+     "note": ""
+    }
+   ],
+   "warnings": [
+    "No numbered method was found, so the instructions were guessed - please check the steps before you start."
+   ]
+  }
+ },
+ {
+  "name": "step_word_and_lone_numbers",
+  "lines": [
+   "Bread",
+   "Method",
+   "Step 1",
+   "Mix the flour and yeast.",
+   "2",
+   "Knead for 10 minutes.",
+   "3",
+   "Prove for 1 hour until doubled.",
+   "Notes",
+   "Keeps for 2 days."
+  ],
+  "title_hint": "",
+  "stem": "step_word_and_lone_numbers",
+  "structured": null,
+  "expected": {
+   "title": "Bread",
+   "ingredients": [],
+   "info": {},
+   "steps": [
+    {
+     "text": "Mix the flour and yeast.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Knead for 10 minutes.",
+     "seconds": 600,
+     "note": ""
+    },
+    {
+     "text": "Prove for 1 hour until doubled.",
+     "seconds": 3600,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "durations_mix",
+  "lines": [
+   "Durations",
+   "Method",
+   "1. Roast for half an hour.",
+   "2. Braise for an hour.",
+   "3. Slow cook for 1½ hours.",
+   "4. Rest for 1 1/2 hours.",
+   "5. Bake for 2 hrs 15 mins.",
+   "6. Steam for 1h30.",
+   "7. Blitz for 45 secs.",
+   "8. Marinate overnight.",
+   "9. Simmer for 20 minutes, stirring every 5 minutes.",
+   "10. Cook for several minutes.",
+   "11. Leave for twenty minutes.",
+   "12. Fry for 3-4 minutes on each side."
+  ],
+  "title_hint": "",
+  "stem": "durations_mix",
+  "structured": null,
+  "expected": {
+   "title": "Durations",
+   "ingredients": [],
+   "info": {},
+   "steps": [
+    {
+     "text": "Roast for half an hour.",
+     "seconds": 1800,
+     "note": ""
+    },
+    {
+     "text": "Braise for an hour.",
+     "seconds": 3600,
+     "note": ""
+    },
+    {
+     "text": "Slow cook for 1½ hours.",
+     "seconds": 5400,
+     "note": ""
+    },
+    {
+     "text": "Rest for 1 1/2 hours.",
+     "seconds": 5400,
+     "note": ""
+    },
+    {
+     "text": "Bake for 2 hrs 15 mins.",
+     "seconds": 8100,
+     "note": ""
+    },
+    {
+     "text": "Steam for 1h30.",
+     "seconds": 5400,
+     "note": ""
+    },
+    {
+     "text": "Blitz for 45 secs.",
+     "seconds": 45,
+     "note": ""
+    },
+    {
+     "text": "Marinate overnight.",
+     "seconds": 0,
+     "note": "Overnight - no timer set. Set your own reminder."
+    },
+    {
+     "text": "Simmer for 20 minutes, stirring every 5 minutes.",
+     "seconds": 1200,
+     "note": ""
+    },
+    {
+     "text": "Cook for several minutes.",
+     "seconds": 300,
+     "note": "Recipe says “several minutes” - timer is an estimate."
+    },
+    {
+     "text": "Leave for twenty minutes.",
+     "seconds": 1200,
+     "note": ""
+    },
+    {
+     "text": "Fry for 3-4 minutes on each side.",
+     "seconds": 180,
+     "note": "Recipe gives 3 min–4 min. Timer uses the shorter time - check, then add time if needed. Timer covers one side - tap Restart timer for the other side."
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "multi_timer_split",
+  "lines": [
+   "Curry",
+   "Method",
+   "1. Heat the oil. Fry the onions for 8 minutes until golden. Add the spices and cook for 1 minute. Stir in the tomatoes and simmer for 15 minutes. Season to taste.",
+   "2. Boil the rice for 10 minutes, then steam for 5 minutes."
+  ],
+  "title_hint": "",
+  "stem": "multi_timer_split",
+  "structured": null,
+  "expected": {
+   "title": "Curry",
+   "ingredients": [],
+   "info": {},
+   "steps": [
+    {
+     "text": "Heat the oil. Fry the onions for 8 minutes until golden.",
+     "seconds": 480,
+     "note": ""
+    },
+    {
+     "text": "Add the spices and cook for 1 minute.",
+     "seconds": 60,
+     "note": ""
+    },
+    {
+     "text": "Stir in the tomatoes and simmer for 15 minutes. Season to taste.",
+     "seconds": 900,
+     "note": ""
+    },
+    {
+     "text": "Boil the rice for 10 minutes",
+     "seconds": 600,
+     "note": ""
+    },
+    {
+     "text": "Then steam for 5 minutes.",
+     "seconds": 300,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "meta_and_subheadings",
+  "lines": [
+   "Lasagne",
+   "Serves: 6",
+   "Prep time: 30 mins",
+   "Cook time: 1 hr",
+   "Ingredients",
+   "For the sauce:",
+   "500 g mince",
+   "Method",
+   "For the sauce",
+   "1) Brown the mince for 10 minutes.",
+   "2) Add the passata and simmer for 30 minutes.",
+   "To serve",
+   "3) Bake for 40 minutes until bubbling."
+  ],
+  "title_hint": "",
+  "stem": "meta_and_subheadings",
+  "structured": null,
+  "expected": {
+   "title": "Lasagne",
+   "ingredients": [
+    "For the sauce:",
+    "500 g mince"
+   ],
+   "info": {
+    "serves": "6",
+    "prep": "30 mins",
+    "cook": "1 hr"
+   },
+   "steps": [
+    {
+     "text": "Brown the mince for 10 minutes.",
+     "seconds": 600,
+     "note": ""
+    },
+    {
+     "text": "Add the passata and simmer for 30 minutes.",
+     "seconds": 1800,
+     "note": ""
+    },
+    {
+     "text": "Bake for 40 minutes until bubbling.",
+     "seconds": 2400,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "boiled_eggs.txt",
+  "lines": [
+   "Perfect Soft-Boiled Eggs",
+   "",
+   "Ingredients",
+   "4 large eggs, at room temperature",
+   "",
+   "Method",
+   "Step 1: Bring a pan of water to a rolling boil.",
+   "Step 2: Lower in the eggs and boil for 6 minutes and 30 seconds.",
+   "Step 3: Transfer to iced water for 2 mins, then peel and serve."
+  ],
+  "title_hint": "",
+  "stem": "boiled_eggs",
+  "structured": null,
+  "expected": {
+   "title": "Perfect Soft-Boiled Eggs",
+   "ingredients": [
+    "4 large eggs, at room temperature"
+   ],
+   "info": {},
+   "steps": [
+    {
+     "text": "Bring a pan of water to a rolling boil.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Lower in the eggs and boil for 6 minutes and 30 seconds.",
+     "seconds": 390,
+     "note": ""
+    },
+    {
+     "text": "Transfer to iced water for 2 mins, then peel and serve.",
+     "seconds": 120,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "lemon_drizzle.docx",
+  "lines": [
+   "Lemon Drizzle Cake",
+   "Serves 8",
+   "Ingredients",
+   "225 g unsalted butter, softened",
+   "225 g caster sugar",
+   "4 eggs",
+   "225 g self-raising flour",
+   "1 lemon, zested",
+   "For the drizzle:",
+   "85 g caster sugar",
+   "Juice of 1½ lemons",
+   "Method",
+   "1. Heat oven to 180C/160C fan/gas 4. Line a 2lb loaf tin with baking parchment.",
+   "2. Beat together the butter and sugar until pale and creamy, then add the eggs one at a time.",
+   "3. Fold in the flour and lemon zest. Spoon into the tin and level the top.",
+   "4. Bake for 45-50 minutes until a skewer comes out clean.",
+   "5. Mix the lemon juice and sugar. Prick the warm cake all over and pour over the drizzle.",
+   "6. Leave in the tin until completely cool, about 30 minutes, then lift out and serve."
+  ],
+  "title_hint": "",
+  "stem": "lemon_drizzle",
+  "structured": null,
+  "expected": {
+   "title": "Lemon Drizzle Cake",
+   "ingredients": [
+    "225 g unsalted butter, softened",
+    "225 g caster sugar",
+    "4 eggs",
+    "225 g self-raising flour",
+    "1 lemon, zested",
+    "For the drizzle:",
+    "85 g caster sugar",
+    "Juice of 1½ lemons"
+   ],
+   "info": {
+    "serves": "8"
+   },
+   "steps": [
+    {
+     "text": "Heat oven to 180C/160C fan/gas 4. Line a 2lb loaf tin with baking parchment.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Beat together the butter and sugar until pale and creamy, then add the eggs one at a time.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Fold in the flour and lemon zest. Spoon into the tin and level the top.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Bake for 45-50 minutes until a skewer comes out clean.",
+     "seconds": 2700,
+     "note": "Recipe gives 45 min–50 min. Timer uses the shorter time - check, then add time if needed."
+    },
+    {
+     "text": "Mix the lemon juice and sugar. Prick the warm cake all over and pour over the drizzle.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Leave in the tin until completely cool, about 30 minutes, then lift out and serve.",
+     "seconds": 1800,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "pancakes.xhtml",
+  "lines": [
+   "Fluffy American Pancakes",
+   "Makes 10 pancakes",
+   "Ingredients",
+   "200 g self-raising flour",
+   "1 tsp baking powder",
+   "1 tbsp golden caster sugar",
+   "3 large eggs",
+   "25 g butter, melted",
+   "200 ml milk",
+   "Method",
+   "1. Mix the flour, baking powder and sugar in a large bowl.",
+   "2. Whisk the eggs, melted butter and milk together, then whisk into the dry ingredients. Leave the batter to rest for 10 minutes.",
+   "3. Heat a non-stick pan over a medium heat. Add a ladle of batter and cook for about 1½ minutes, until bubbles appear.",
+   "4. Flip and cook for 30 seconds - 1 minute on the other side.",
+   "5. Serve stacked with maple syrup and berries."
+  ],
+  "title_hint": "Fluffy American Pancakes",
+  "stem": "pancakes",
+  "structured": null,
+  "expected": {
+   "title": "Fluffy American Pancakes",
+   "ingredients": [
+    "200 g self-raising flour",
+    "1 tsp baking powder",
+    "1 tbsp golden caster sugar",
+    "3 large eggs",
+    "25 g butter, melted",
+    "200 ml milk"
+   ],
+   "info": {
+    "serves": "10 pancakes"
+   },
+   "steps": [
+    {
+     "text": "Mix the flour, baking powder and sugar in a large bowl.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Whisk the eggs, melted butter and milk together, then whisk into the dry ingredients. Leave the batter to rest for 10 minutes.",
+     "seconds": 600,
+     "note": ""
+    },
+    {
+     "text": "Heat a non-stick pan over a medium heat. Add a ladle of batter and cook for about 1½ minutes, until bubbles appear.",
+     "seconds": 90,
+     "note": ""
+    },
+    {
+     "text": "Flip and cook for 30 seconds - 1 minute on the other side.",
+     "seconds": 60,
+     "note": "Timer covers one side - tap Restart timer for the other side. This step mentions more than one time; the longest is used."
+    },
+    {
+     "text": "Serve stacked with maple syrup and berries.",
+     "seconds": 0,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "risotto.xml",
+  "lines": [
+   "Serves 4",
+   "Ingredients",
+   "1 litre hot vegetable stock",
+   "300 g arborio rice",
+   "250 g chestnut mushrooms, sliced",
+   "1 onion, finely chopped",
+   "50 g parmesan, grated",
+   "Method",
+   "1. Fry the onion in a little butter for 5 minutes until soft.",
+   "2. Add the mushrooms and cook for 3 minutes.",
+   "3. Stir in the rice and toast for 1 minute.",
+   "4. Add the stock a ladle at a time, stirring, for 18-20 minutes until the rice is creamy.",
+   "5. Stir in the parmesan, cover and rest for 2 minutes. Serve."
+  ],
+  "title_hint": "Mushroom Risotto",
+  "stem": "risotto",
+  "structured": null,
+  "expected": {
+   "title": "Mushroom Risotto",
+   "ingredients": [
+    "1 litre hot vegetable stock",
+    "300 g arborio rice",
+    "250 g chestnut mushrooms, sliced",
+    "1 onion, finely chopped",
+    "50 g parmesan, grated"
+   ],
+   "info": {
+    "serves": "4"
+   },
+   "steps": [
+    {
+     "text": "Fry the onion in a little butter for 5 minutes until soft.",
+     "seconds": 300,
+     "note": ""
+    },
+    {
+     "text": "Add the mushrooms and cook for 3 minutes.",
+     "seconds": 180,
+     "note": ""
+    },
+    {
+     "text": "Stir in the rice and toast for 1 minute.",
+     "seconds": 60,
+     "note": ""
+    },
+    {
+     "text": "Add the stock a ladle at a time, stirring, for 18-20 minutes until the rice is creamy.",
+     "seconds": 1080,
+     "note": "Recipe gives 18 min–20 min. Timer uses the shorter time - check, then add time if needed."
+    },
+    {
+     "text": "Stir in the parmesan, cover and rest for 2 minutes. Serve.",
+     "seconds": 120,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "name": "tray_bake.html",
+  "lines": [
+   "Tray bake",
+   "Some page text that should be ignored because JSON-LD wins."
+  ],
+  "title_hint": "Tray bake",
+  "stem": "tray_bake",
+  "structured": {
+   "@type": "Recipe",
+   "name": "Easy Chicken Tray Bake",
+   "recipeYield": "4 servings",
+   "prepTime": "PT15M",
+   "cookTime": "PT45M",
+   "recipeIngredient": [
+    "8 chicken thighs",
+    "500 g new potatoes, halved",
+    "2 red onions, cut into wedges",
+    "2 tbsp olive oil"
+   ],
+   "recipeInstructions": [
+    {
+     "@type": "HowToSection",
+     "name": "Prep",
+     "itemListElement": [
+      {
+       "@type": "HowToStep",
+       "text": "Heat oven to 200C/180C fan."
+      },
+      {
+       "@type": "HowToStep",
+       "text": "Toss everything with the oil and season well."
+      }
+     ]
+    },
+    {
+     "@type": "HowToStep",
+     "text": "Roast for 25 minutes. Turn everything over and roast for another 20 minutes until golden."
+    },
+    {
+     "@type": "HowToStep",
+     "text": "Rest for 5 mins before serving."
+    }
+   ]
+  },
+  "expected": {
+   "title": "Easy Chicken Tray Bake",
+   "ingredients": [
+    "8 chicken thighs",
+    "500 g new potatoes, halved",
+    "2 red onions, cut into wedges",
+    "2 tbsp olive oil"
+   ],
+   "info": {
+    "serves": "4 servings",
+    "prep": "15 min",
+    "cook": "45 min"
+   },
+   "steps": [
+    {
+     "text": "Heat oven to 200C/180C fan.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Toss everything with the oil and season well.",
+     "seconds": 0,
+     "note": ""
+    },
+    {
+     "text": "Roast for 25 minutes.",
+     "seconds": 1500,
+     "note": ""
+    },
+    {
+     "text": "Turn everything over and roast for another 20 minutes until golden.",
+     "seconds": 1200,
+     "note": ""
+    },
+    {
+     "text": "Rest for 5 mins before serving.",
+     "seconds": 300,
+     "note": ""
+    }
+   ],
+   "warnings": []
+  }
+ }
+]

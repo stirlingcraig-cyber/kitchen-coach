@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self'; media-src 'self' data: blob:; object-src 'none'; base-uri 'self'">
+  <meta name="theme-color" content="#101a16">
+  <meta name="description" content="Kitchen Coach reads your recipe and talks you through it, one timed step at a time.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Kitchen Coach">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icons/logo.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Kitchen Coach</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" id="homeLink" aria-label="Kitchen Coach home">
+      <img src="icons/logo.svg" alt="" width="40" height="40">
+      <span>Kitchen&nbsp;Coach</span>
+    </a>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings" title="Settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.4-1-2 3.4L4.6 11a7.5 7.5 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.4 1 2-3.4zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+    </button>
+  </header>
+
+  <main id="app">
+    <!-- ============ HOME ============ -->
+    <section id="homeView" class="view">
+      <div class="hero">
+        <p class="eyebrow">Your sous-chef, out loud</p>
+        <h1>Drop in a recipe.<br><em>Cook it step by step.</em></h1>
+        <p class="lede">Kitchen Coach reads PDF, Word, XML and XHTML recipes, finds every step and every time,
+          then talks you through it with timers that keep running while you move on.</p>
+      </div>
+
+      <div id="resumeBanner" class="banner" hidden>
+        <div><strong>Cooking in progress</strong><span id="resumeText"></span></div>
+        <div class="row">
+          <button class="btn ghost" id="discardSession">Discard</button>
+          <button class="btn primary" id="resumeSession">Resume</button>
+        </div>
+      </div>
+
+      <label class="dropzone" id="dropzone" tabindex="0">
+        <input type="file" id="fileInput"
+               accept=".pdf,.docx,.xml,.xhtml,.html,.htm,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/xml,text/xml,application/xhtml+xml,text/html,text/plain">
+        <span class="dz-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l5 5h-3v6h-4V8H7zm-7 14h14v4H5z"/></svg>
+        </span>
+        <span class="dz-title">Choose a recipe file</span>
+        <span class="dz-sub">or drag it here &middot; PDF &middot; Word .docx &middot; XML &middot; XHTML &middot; HTML &middot; TXT</span>
+      </label>
+      <div id="busy" class="busy" hidden><span class="spinner"></span> Reading your recipe&hellip;</div>
+      <p id="homeError" class="error" role="alert" hidden></p>
+      <p class="center"><button class="link" id="sampleBtn">No recipe to hand? Try a sample recipe</button></p>
+
+      <h2 class="section-title">Your recipes</h2>
+      <p id="emptyLibrary" class="muted">Recipes you save appear here so you can cook them again offline.</p>
+      <ul id="library" class="library"></ul>
+    </section>
+
+    <!-- ============ REVIEW ============ -->
+    <section id="reviewView" class="view" hidden>
+      <button class="link back" id="reviewBack">&larr; All recipes</button>
+      <input id="titleInput" class="title-input" aria-label="Recipe title" maxlength="90">
+      <div id="infoChips" class="chips"></div>
+      <div id="warnings" class="notice" hidden></div>
+      <p class="notice soft">Check the steps and timers before you start. Times come from the recipe; edit anything
+        that looks wrong. 0:00 means no timer.</p>
+
+      <details class="ingredients" id="ingredientsBox">
+        <summary>Ingredients <span id="ingCount"></span></summary>
+        <ul id="ingredientList" class="checklist"></ul>
+      </details>
+
+      <ol id="stepList" class="step-list"></ol>
+      <button class="btn ghost wide" id="addStep">+ Add a step</button>
+
+      <div class="sticky-actions">
+        <span id="totalTime" class="muted"></span>
+        <button class="btn ghost" id="saveRecipe">Save</button>
+        <button class="btn primary big" id="startCooking">Start cooking</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ COOK MODE ============ -->
+  <section id="cookView" class="cook" hidden aria-live="polite">
+    <div class="cook-top">
+      <button class="icon-btn" id="exitCook" aria-label="Stop cooking" title="Stop cooking (Esc)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="cook-title">
+        <span id="cookRecipeTitle"></span>
+        <span id="cookPosition" class="muted"></span>
+      </div>
+      <button class="icon-btn" id="showIngredients" aria-label="Ingredients" title="Ingredients">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/></svg>
+      </button>
+    </div>
+    <div class="progress"><span id="progressBar"></span></div>
+
+    <div class="cook-body">
+      <div class="step-card">
+        <p class="step-label" id="stepLabel"></p>
+        <p class="step-text" id="stepText"></p>
+        <p class="step-note" id="stepNote" hidden></p>
+      </div>
+
+      <div class="timer-wrap" id="timerWrap">
+        <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+          <circle cx="110" cy="110" r="96" class="ring-bg"/>
+          <circle cx="110" cy="110" r="96" class="ring-fg" id="ringFg"/>
+        </svg>
+        <div class="clock">
+          <span id="clock">--:--</span>
+          <small id="timerState"></small>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn round" id="backBtn" title="Previous step (&larr;)" aria-label="Previous step">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn primary huge" id="primaryBtn">Start timer</button>
+        <button class="btn round accent" id="nextBtn" title="Next step (&rarr;)" aria-label="Next step">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="controls small">
+        <button class="btn ghost" id="repeatBtn" title="Read the step again (R)">&#128264; Repeat</button>
+        <button class="btn ghost" id="plusBtn" title="Add one minute (+)">+1 min</button>
+        <button class="btn ghost" id="restartBtn" title="Restart this timer">&#8635; Restart timer</button>
+      </div>
+      <p class="kbd-hint muted">Keys: Space start/pause &middot; &rarr; next &middot; &larr; back &middot; R repeat &middot; + add a minute</p>
+    </div>
+
+    <div class="tray" id="tray" aria-label="Running timers"></div>
+  </section>
+
+  <!-- ============ DIALOGS ============ -->
+  <dialog id="settingsDialog" class="sheet">
+    <form method="dialog">
+      <h2>Settings</h2>
+      <label class="switch"><input type="checkbox" id="setVoice"> <span>Speak steps and alerts aloud</span></label>
+      <label>Voice
+        <select id="setVoiceName"><option value="">Default voice</option></select>
+      </label>
+      <label>Speaking speed <output id="rateOut">1.0</output>
+        <input type="range" id="setRate" min="0.6" max="1.5" step="0.1">
+      </label>
+      <label class="switch"><input type="checkbox" id="setAutoStart"> <span>Start each step's timer automatically</span></label>
+      <label class="switch"><input type="checkbox" id="setChime"> <span>Chime when a timer finishes</span></label>
+      <label class="switch"><input type="checkbox" id="setRepeatAlarm"> <span>Keep chiming until I respond (up to 2 min)</span></label>
+      <label class="switch"><input type="checkbox" id="setWake"> <span>Keep the screen awake while cooking</span></label>
+      <div class="row end">
+        <button type="button" class="btn ghost" id="testVoice">Test voice</button>
+        <button class="btn primary" value="close">Done</button>
+      </div>
+      <p class="muted small" id="versionLine"></p>
+    </form>
+  </dialog>
+
+  <dialog id="ingredientsDialog" class="sheet">
+    <form method="dialog">
+      <h2>Ingredients</h2>
+      <ul id="cookIngredients" class="checklist"></ul>
+      <div class="row end"><button class="btn primary" value="close">Close</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="confirmDialog" class="sheet narrow">
+    <form method="dialog">
+      <p id="confirmText"></p>
+      <div class="row end">
+        <button class="btn ghost" value="no">Cancel</button>
+        <button class="btn primary" value="yes" id="confirmYes">OK</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
